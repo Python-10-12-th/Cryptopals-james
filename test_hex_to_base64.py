@@ -5,6 +5,15 @@ class TestHexToBase64(unittest.TestCase):
     def test_hex_to_bytes(self):
         from hex_to_base64 import hex_to_bytes
         self.assertEqual(hex_to_bytes("4d616e"), b"Man")
+        
+    def test_base64_padding_1_byte(self):
+        from hex_to_base64 import bytes_to_base64
+        self.assertEqual(bytes_to_base64(b"M"), "TQ==")
+
+    def test_base64_padding_2_bytes(self):
+        from hex_to_base64 import bytes_to_base64
+        self.assertEqual(bytes_to_base64(b"Ma"), "TWE=")
+
 
 
     def test_challenge_case(self):
